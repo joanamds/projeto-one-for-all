@@ -5,7 +5,7 @@ DROP DATABASE IF EXISTS SpotifyClone;
   CREATE TABLE SpotifyClone.signatures(
       sign_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
       sign_name VARCHAR(50) NOT NULL,
-      sign_value VARCHAR(50) NOT NULL
+      sign_value DECIMAL(3,2) NOT NULL
   ) engine = InnoDB;
 
   CREATE TABLE SpotifyClone.artists(
@@ -57,10 +57,10 @@ DROP DATABASE IF EXISTS SpotifyClone;
 
   INSERT INTO SpotifyClone.signatures (sign_name, sign_value)
   VALUES
-    ('gratuito', '0,00'),
-    ('familiar', '7,99'),
-    ('universitário', '5,99'),
-    ('pessoal', '6,99');
+    ('gratuito', 0.00),
+    ('familiar', 7.99),
+    ('universitário', 5.99),
+    ('pessoal', 6.99);
   
   INSERT INTO SpotifyClone.artists (artist_name)
   VALUES
