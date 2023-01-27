@@ -1,7 +1,11 @@
 SELECT 
   s.song_name AS nome,
-  COUNT(DISTINCT(h.user_id)) AS reproducoes
-FROM SpotifyClone.songs AS s
-INNER JOIN SpotifyClone.history AS h ON s.song_id = h.song_id
+  COUNT(*) AS reproducoes
+FROM SpotifyClone.history AS h
+INNER JOIN SpotifyClone.users AS u ON h.user_id = u.user_id
+INNER JOIN SpotifyClone.songs AS s ON h.song_id = s.song_id
+INNER JOIN SpotifyClone.signatures AS sign ON sign.sign_id = u.sign_id
+WHERE sign.sign_name = 'gratuito' OR sign.sign_name = 'pessoal'
 GROUP BY nome
 ORDER BY nome;
+
