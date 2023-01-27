@@ -25,6 +25,7 @@ DROP DATABASE IF EXISTS SpotifyClone;
   CREATE TABLE SpotifyClone.following_artists(
       user_id INT NOT NULL,
       artist_id INT NOT NULL, 
+      PRIMARY KEY (user_id, artist_id),
       FOREIGN KEY (user_id) REFERENCES users (user_id),
       FOREIGN KEY (artist_id) REFERENCES artists (artist_id)
   ) engine = InnoDB;
@@ -46,10 +47,10 @@ DROP DATABASE IF EXISTS SpotifyClone;
   ) engine = InnoDB;
 
   CREATE TABLE SpotifyClone.history(
-    history_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
     history_date DATETIME NOT NULL, 
     user_id INT NOT NULL, 
     song_id INT NOT NULL,
+    PRIMARY KEY (user_id, song_id),
     FOREIGN KEY (user_id) REFERENCES users (user_id),
     FOREIGN KEY (song_id) REFERENCES songs (song_id)
   ) engine = InnoDB;
@@ -63,7 +64,7 @@ DROP DATABASE IF EXISTS SpotifyClone;
   
   INSERT INTO SpotifyClone.artists (artist_name)
   VALUES
-    ('Beyonce'), 
+    ('Beyoncé'), 
     ('Queen'), 
     ('Elis Regina'),
     ('Baco Exu do Blues'),
@@ -89,13 +90,14 @@ DROP DATABASE IF EXISTS SpotifyClone;
     (1, 2),
     (1, 3),
     (2, 1),
-    (2, 2),
+    (2, 3),
     (3, 2),
     (4, 4),
     (5, 5),
     (5, 6),
     (6, 1),
     (6, 6),
+    (7, 6),
     (9, 3),
     (10, 2);
 
@@ -140,6 +142,4 @@ DROP DATABASE IF EXISTS SpotifyClone;
     (7, '2011-12-15 22:30:49', 4),
     (8, '2012-03-17 14:56:41', 4),
     (9, '2022-02-24 21:14:22', 9),
-    (10, '2015-12-13 08:30:22', 3),
-    (10, '2015-12-13 08:30:22', 3);
-        
+    (10, '2015-12-13 08:30:22', 3);        
